@@ -6,3 +6,26 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id       Int      @id @default(autoincrement())
+  username String   @unique @db.VarChar(30)
+  email    String   @unique @db.VarChar(50)
+  password String   @db.VarChar(255)
+  Folders  Folder[]
+}
+
+model Folder {
+  id     Int    @id @default(autoincrement())
+  name   String @db.VarChar(30)
+  user   User   @relation(fields: [userId], references: [id])
+  userId Int
+  Files  File[]
+}
+
+model File {
+  id       Int    @id @default(autoincrement())
+  url      String
+  folder   Folder @relation(fields: [folderId], references: [id])
+  folderId Int
+}
