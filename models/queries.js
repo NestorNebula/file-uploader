@@ -19,4 +19,11 @@ const checkExistingUser = async (username, email) => {
   return user;
 };
 
-module.exports = { createUser, checkExistingUser };
+const getUser = async (user) => {
+  const user = await prisma.user.findFirst({
+    where: { OR: [{ username: user }, { email: user }] },
+  });
+  return user;
+};
+
+module.exports = { createUser, checkExistingUser, getUser };
