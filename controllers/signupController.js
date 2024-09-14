@@ -21,7 +21,14 @@ const validateUser = [
     .isLength({ max: 50 })
     .withMessage(() => errLength('email', 0, 50))
     .isEmail()
-    .withMessage('Email is not valid.'),
+    .withMessage('Email is not valid.')
+    .custom(async (email, { req }) => {
+      const user = await prisma.checkExistingUser(req.body.username, email);
+      if (user) {
+        throw new Error('Username or email already taken.');
+      }
+      return email;
+    }),
   body('password')
     .trim()
     .blacklist('<>')
