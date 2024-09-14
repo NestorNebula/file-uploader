@@ -1,4 +1,6 @@
-const getLogin = () => {};
+const getLogin = (req, res) => {
+  res.render('log-in');
+};
 
 const postLogin = () => {};
 
