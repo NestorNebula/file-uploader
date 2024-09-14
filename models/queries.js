@@ -12,4 +12,11 @@ const createUser = async (user) => {
   });
 };
 
-module.exports = { createUser };
+const checkExistingUser = async (username, email) => {
+  const user = await prisma.user.findFirst({
+    where: { OR: [{ username }, { email }] },
+  });
+  return user;
+};
+
+module.exports = { createUser, checkExistingUser };
