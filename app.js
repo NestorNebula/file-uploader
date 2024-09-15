@@ -44,6 +44,9 @@ app.use((req, res, next) => {
 app.get('/', indexController);
 app.use('/sign-up', signupRouter);
 app.use('/log-in', loginRouter);
+app.use((req, res, next) => {
+  req.user ? next() : res.redirect('/log-in');
+});
 app.get('/user', userController);
 app.get('/user/:folder/:file', fileController);
 app.use('/new-file', newfileRouter);
