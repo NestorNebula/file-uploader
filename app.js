@@ -33,6 +33,11 @@ app.use(
   })
 );
 app.use(passport.session());
+require('./modules/passport-config');
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
 
 app.get('/', indexController);
 app.use('/sign-up', signupRouter);
