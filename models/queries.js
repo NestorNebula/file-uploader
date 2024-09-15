@@ -2,6 +2,8 @@ const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
+// User queries
+
 const createUser = async (user) => {
   await prisma.user.create({
     data: {
@@ -34,9 +36,23 @@ const getUserById = async (id) => {
   return user;
 };
 
+// Folder queries
+
+const createFolder = async (folder) => {
+  await prisma.folder.create({
+    data: {
+      name: folder.name,
+      user: {
+        connect: { id: folder.user.id },
+      },
+    },
+  });
+};
+
 module.exports = {
   createUser,
   checkExistingUser,
   getUserByUsermail,
   getUserById,
+  createFolder,
 };
