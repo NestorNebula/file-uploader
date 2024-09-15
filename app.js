@@ -4,7 +4,7 @@ const path = require('node:path');
 require('dotenv').config();
 const signupRouter = require('./routes/signupRouter');
 const loginRouter = require('./routes/loginRouter');
-const newfileRouter = require('./routes/newfileRouter');
+const newRouter = require('./routes/newRouter');
 const indexController = require('./controllers/indexController');
 const userController = require('./controllers/userController');
 const fileController = require('./controllers/fileController');
@@ -49,6 +49,6 @@ app.use((req, res, next) => {
 });
 app.get('/user', userController);
 app.get('/user/:folder/:file', fileController);
-app.use('/new-file', newfileRouter);
+app.use('/new', newRouter);
 
 app.listen(process.env.PORT);

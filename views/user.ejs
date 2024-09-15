@@ -9,6 +9,15 @@
 
 <body>
   <div>Hello, <%= user.username %></div>
+  <div>You have <%= user.Folders.length %> folders.</div>
+  <% user.Folders.forEach((folder) => { %>
+  <div>
+    <div><%= folder.name %></div>
+    <% folder.Files.forEach((file) => { %>
+    <div><%= file.url %></div>
+    <% }) %>
+  </div>
+  <% }) %>
 </body>
 
 </html>
