@@ -29,6 +29,7 @@ const getUserByUsermail = async (username) => {
 const getUserById = async (id) => {
   const user = await prisma.user.findUnique({
     where: { id },
+    include: { Folders: { include: { Files: true } } },
   });
   return user;
 };
