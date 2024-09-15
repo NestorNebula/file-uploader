@@ -8,12 +8,8 @@
 </head>
 
 <body>
-  <% if (locals.errors) { %>
-  <div>
-    <% locals.errors.forEach((err) => { %>
-    <div><%= err.msg %></div>
-    <% }) %>
-  </div>
+  <% if (error.length) { %>
+  <div><%= error %></div>
   <% } %>
   <form action="/log-in" method="POST">
     <label for="username">Username or Email</label>

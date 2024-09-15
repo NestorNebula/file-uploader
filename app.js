@@ -12,6 +12,7 @@ const session = require('express-session');
 const passport = require('passport');
 const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
 const { PrismaClient } = require('@prisma/client');
+const flash = require('connect-flash');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -32,6 +33,7 @@ app.use(
     }),
   })
 );
+app.use(flash());
 app.use(passport.session());
 require('./modules/passport-config');
 app.use((req, res, next) => {
