@@ -19,9 +19,9 @@ const checkExistingUser = async (username, email) => {
   return user;
 };
 
-const getUser = async (user) => {
+const getUser = async (username) => {
   const user = await prisma.user.findFirst({
-    where: { OR: [{ username: user }, { email: user }] },
+    where: { OR: [{ username }, { email: username }] },
   });
   return user;
 };
