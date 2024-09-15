@@ -1,6 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const prisma = require('../models/queries');
+const bcrypt = require('bcrypt');
 
 passport.use(
   new LocalStrategy(async (username, password, done) => {
@@ -27,7 +28,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await prisma.getUserById(id);
-    return done(null, user);
+    done(null, user);
   } catch (err) {
     return done(err);
   }
