@@ -13,6 +13,15 @@
   <% user.Folders.forEach((folder) => { %>
   <div>
     <div><%= folder.name %></div>
+    <form action="/update" method="POST">
+      <input name="id" type="hidden" value="<%= folder.id %>">
+      <input name="action" type="hidden" value="ask">
+      <button>Update</button>
+    </form>
+    <form action="/delete" method="POST">
+      <input name="id" type="hidden" value="folder.id">
+      <button>Delete</button>
+    </form>
     <% folder.Files.forEach((file) => { %>
     <div><%= file.url %></div>
     <% }) %>
