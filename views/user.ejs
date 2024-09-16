@@ -19,7 +19,7 @@
       <button>Update</button>
     </form>
     <form action="/delete" method="POST">
-      <input name="id" type="hidden" value="folder.id">
+      <input name="id" type="hidden" value="<%= folder.id %>">
       <button>Delete</button>
     </form>
     <% folder.Files.forEach((file) => { %>
