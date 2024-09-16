@@ -49,10 +49,16 @@ const createFolder = async (folder) => {
   });
 };
 
+const getFolderById = async (id) => {
+  const folder = await prisma.folder.findUnique({ where: { id } });
+  return folder;
+};
+
 module.exports = {
   createUser,
   checkExistingUser,
   getUserByUsermail,
   getUserById,
   createFolder,
+  getFolderById,
 };
