@@ -54,6 +54,13 @@ const getFolderById = async (id) => {
   return folder;
 };
 
+const updateFolder = async (id, folder) => {
+  await prisma.folder.update({
+    where: { id },
+    data: { name: folder.name },
+  });
+};
+
 module.exports = {
   createUser,
   checkExistingUser,
@@ -61,4 +68,5 @@ module.exports = {
   getUserById,
   createFolder,
   getFolderById,
+  updateFolder,
 };
