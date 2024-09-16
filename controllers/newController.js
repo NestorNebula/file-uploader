@@ -3,8 +3,9 @@ const prisma = require('../models/queries');
 
 const validateFolder = [body('fname').trim().blacklist('<>')];
 
-const getNew = (req, res) => {
-  res.render('new');
+const getNew = async (req, res) => {
+  const folders = await prisma.getAllFolders();
+  res.render('new', { folders: folders });
 };
 
 const postNew = [
