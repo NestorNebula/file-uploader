@@ -9,6 +9,7 @@ const indexController = require('./controllers/indexController');
 const userController = require('./controllers/userController');
 const fileController = require('./controllers/fileController');
 const updateController = require('./controllers/updateController');
+const deleteController = require('./controllers/deleteController');
 const session = require('express-session');
 const passport = require('passport');
 const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
@@ -52,5 +53,6 @@ app.get('/user', userController);
 app.get('/user/:folder/:file', fileController);
 app.use('/new', newRouter);
 app.post('/update', updateController);
+app.post('/delete', deleteController);
 
 app.listen(process.env.PORT);
