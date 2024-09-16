@@ -9,9 +9,9 @@ const getNew = (req, res) => {
 
 const postNew = [
   validateFolder,
-  (req, res) => {
+  async (req, res) => {
     if (req.body.action_type === 'cfolder') {
-      prisma.createFolder({ name: req.body.fname, user: req.user });
+      await prisma.createFolder({ name: req.body.fname, user: req.user });
       return res.redirect('/');
     }
     res.redirect('/');
