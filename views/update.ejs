@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update <%= folder.name %></title>
+</head>
+
+<body>
+  <form action="/update" method="POST">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" value="<%= folder.name %>">
+    <input name="id" type="hidden" value="<%= folder.id %>">
+    <input name="action" type="hidden" value="send">
+    <button>Update</button>
+  </form>
+</body>
+
+</html>
