@@ -20,6 +20,10 @@
     <% } %>
   </div>
   <div><%= file.uploadTime.toLocaleString() %></div>
+  <form action="/user/<%= folder.id %>/<%= file.id %>" method="POST">
+    <button>Download</button>
+    <input name="url" type="hidden" value="<%= file.url %>">
+  </form>
 </body>
 
 </html>
