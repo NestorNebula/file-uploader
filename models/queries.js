@@ -87,6 +87,11 @@ const createFile = async (file) => {
   });
 };
 
+const getFile = async (id) => {
+  const file = await prisma.file.findUnique({ where: { id } });
+  return file;
+};
+
 module.exports = {
   createUser,
   checkExistingUser,
@@ -98,4 +103,5 @@ module.exports = {
   updateFolder,
   deleteFolder,
   createFile,
+  getFile,
 };
