@@ -72,6 +72,21 @@ const deleteFolder = async (id) => {
   });
 };
 
+// File queries
+
+const createFile = async (file) => {
+  await prisma.file.create({
+    data: {
+      url: file.url,
+      name: file.name,
+      size: file.size,
+      folder: {
+        connect: { id: file.folder },
+      },
+    },
+  });
+};
+
 module.exports = {
   createUser,
   checkExistingUser,
@@ -82,4 +97,5 @@ module.exports = {
   getAllFolders,
   updateFolder,
   deleteFolder,
+  createFile,
 };
