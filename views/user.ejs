@@ -23,7 +23,7 @@
       <button>Delete</button>
     </form>
     <% folder.Files.forEach((file) => { %>
-    <div><%= file.url %></div>
+    <img src="<%= file.url %>" alt="<%= file.name %>">
     <% }) %>
   </div>
   <% }) %>
