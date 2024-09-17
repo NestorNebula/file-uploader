@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= `${user.username} ${file.name}` %></title>
+</head>
+
+<body>
+  <div><%= file.name %></div>
+  <img src="<%= file.url %>" alt="<%= file.name %>">
+  <div>
+    <% if (file.size < 1000000) { %>
+    <%= `${file.size} B`%>
+    <% } else if (file.size < 1000000000) { %>
+    <%= `${Math.round(file.size * 100 / 100000) /100} MB`%>
+    <% } else { %>
+    <%= `${Math.round(file.size * 100 / 100000000) /100} GB`%>
+    <% } %>
+  </div>
+  <div><%= file.uploadTime.toLocaleString() %></div>
+</body>
+
+</html>
