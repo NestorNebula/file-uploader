@@ -7,7 +7,7 @@ const loginRouter = require('./routes/loginRouter');
 const newRouter = require('./routes/newRouter');
 const indexController = require('./controllers/indexController');
 const userController = require('./controllers/userController');
-const fileController = require('./controllers/fileController');
+const fileRouter = require('./routes/fileRouter');
 const updateController = require('./controllers/updateController');
 const deleteController = require('./controllers/deleteController');
 const session = require('express-session');
@@ -50,7 +50,7 @@ app.use((req, res, next) => {
   req.user ? next() : res.redirect('/log-in');
 });
 app.get('/user', userController);
-app.get('/user/:folder/:file', fileController);
+app.use('/user/:folder/:file', fileRouter);
 app.use('/new', newRouter);
 app.post('/update', updateController);
 app.post('/delete', deleteController);
