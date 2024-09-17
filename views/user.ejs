@@ -23,7 +23,7 @@
       <button>Delete</button>
     </form>
     <% folder.Files.forEach((file) => { %>
-    <img src="<%= file.url %>" alt="<%= file.name %>">
+    <a href="/user/<%= folder.id %>/<%= file.id %>"> <img src="<%= file.url %>" alt="<%= file.name %>"></a>
     <% }) %>
   </div>
   <% }) %>
