@@ -16,11 +16,12 @@ model User {
 }
 
 model Folder {
-  id     Int    @id @default(autoincrement())
-  name   String @db.VarChar(30)
-  user   User   @relation(fields: [userId], references: [id])
-  userId Int
-  Files  File[]
+  id        Int     @id @default(autoincrement())
+  name      String  @db.VarChar(30)
+  shareLink String?
+  user      User    @relation(fields: [userId], references: [id])
+  userId    Int
+  Files     File[]
 }
 
 model File {
