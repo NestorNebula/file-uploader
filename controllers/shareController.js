@@ -1,6 +1,14 @@
 const prisma = require('../models/queries');
 
-const getShare = () => {};
+const getShare = async (req, res) => {
+  const link = await prisma.getLinkByLink(req.params.link);
+  if (!link || link.expire < new Date()) {
+    return res.redirect('/');
+  }
+  const folder = await prisma.getFolderById(link.folderId);
+  const user = await prisma.getUserById(folder.userId);
+  res.render('share', { folder, user });
+};
 
 const postShare = async (req, res) => {
   const date = new Date();
