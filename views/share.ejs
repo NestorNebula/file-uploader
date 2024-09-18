@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= folder.name %></title>
+</head>
+
+<body>
+  <div><%= `${folder.name} by ${user.username}` %></div>
+  <% folder.Files.forEach((file) => { %>
+  <div><%= file.name %></div>
+  <img src="<%= file.url %>" alt="<%= file.name %>">
+  <% }) %>
+</body>
+
+</html>
