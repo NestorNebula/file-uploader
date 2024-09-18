@@ -22,8 +22,8 @@
       <input name="id" type="hidden" value="<%= folder.id %>">
       <button>Delete</button>
     </form>
-    <% if (folder.ShareLink) { %>
-    <div>Share Link: <%= folder.ShareLink.link %></div>
+    <% if (folder.ShareLink && folder.ShareLink.expire > new Date()) { %>
+    <a href="/share/<%= folder.ShareLink.link %>">Share Link</a>
     <% } else { %>
     <form action="/share" method="POST">
       <label for="exDate">Choose link's duration</label>
