@@ -112,6 +112,13 @@ const getLinkByFolderId = async (folderId) => {
   return link;
 };
 
+const getLinkByLink = async (link) => {
+  const shareLink = await prisma.shareLink.findFirst({
+    where: { link },
+  });
+  return shareLink;
+};
+
 const updateLink = async (exDate, folderId) => {
   await prisma.shareLink.update({
     where: { folderId },
@@ -135,5 +142,6 @@ module.exports = {
   getFile,
   createLink,
   getLinkByFolderId,
+  getLinkByLink,
   updateLink,
 };
