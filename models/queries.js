@@ -31,7 +31,7 @@ const getUserByUsermail = async (username) => {
 const getUserById = async (id) => {
   const user = await prisma.user.findUnique({
     where: { id },
-    include: { Folders: { include: { Files: true } } },
+    include: { Folders: { include: { Files: true, ShareLink: true } } },
   });
   return user;
 };
@@ -92,6 +92,35 @@ const getFile = async (id) => {
   return file;
 };
 
+// ShareLink queries
+
+const createLink = async (exDate, folderId) => {
+  await prisma.shareLink.create({
+    data: {
+      expire: exDate,
+      folder: {
+        connect: { id: folderId },
+      },
+    },
+  });
+};
+
+const getLinkByFolderId = async (folderId) => {
+  const link = await prisma.shareLink.findUnique({
+    where: { folderId },
+  });
+  return link;
+};
+
+const updateLink = async (exDate, folderId) => {
+  await prisma.shareLink.update({
+    where: { folderId },
+    data: {
+      expire: exDate,
+    },
+  });
+};
+
 module.exports = {
   createUser,
   checkExistingUser,
@@ -104,4 +133,7 @@ module.exports = {
   deleteFolder,
   createFile,
   getFile,
+  createLink,
+  getLinkByFolderId,
+  updateLink,
 };
