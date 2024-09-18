@@ -1,4 +1,5 @@
 const prisma = require('../models/queries');
+const download = require('../modules/download');
 
 const getShare = async (req, res) => {
   const link = await prisma.getLinkByLink(req.params.link);
@@ -25,4 +26,9 @@ const postShare = async (req, res) => {
   res.redirect('/user');
 };
 
-module.exports = { getShare, postShare };
+const downloadShare = async (req, res) => {
+  const file = await prisma.getFile(+req.params.file);
+  download(file.url, res);
+};
+
+module.exports = { getShare, postShare, downloadShare };
