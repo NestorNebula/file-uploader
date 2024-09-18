@@ -50,12 +50,23 @@ const createFolder = async (folder) => {
 };
 
 const getFolderById = async (id) => {
-  const folder = await prisma.folder.findUnique({ where: { id } });
+  const folder = await prisma.folder.findUnique({
+    where: { id },
+    include: {
+      Files: true,
+      ShareLink: true,
+    },
+  });
   return folder;
 };
 
 const getAllFolders = async () => {
-  const folders = await prisma.folder.findMany();
+  const folders = await prisma.folder.findMany({
+    include: {
+      Files: true,
+      ShareLink: true,
+    },
+  });
   return folders;
 };
 
