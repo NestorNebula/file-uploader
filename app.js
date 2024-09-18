@@ -51,6 +51,18 @@ app.use('/share', shareRouter);
 app.use((req, res, next) => {
   req.user ? next() : res.redirect('/log-in');
 });
+app.get('/log-out', (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(
+        new Sperror('Server Error', 'An error occured when logging-out', 500)
+      );
+    }
+    req.session = null;
+    res.clearCookie('connect.sid', { domain: 'localhost', path: '/' });
+    res.redirect('/');
+  });
+});
 app.use('/user', userRouter);
 app.use('/new', newRouter);
 app.post('/update', updateController);
