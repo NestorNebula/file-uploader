@@ -1,6 +1,5 @@
 const prisma = require('../models/queries');
-const { createWriteStream, unlink } = require('fs');
-const https = require('https');
+const download = require('../modules/download');
 
 const getFile = (req, res) => {
   const file = prisma.getFile(+req.params.file);
@@ -14,21 +13,7 @@ const getFile = (req, res) => {
 };
 
 const postFile = async (req, res) => {
-  https.get(req.body.url, (response) => {
-    const fileName = req.body.url.split('/').pop();
-    const filePath = './public/assets/' + fileName;
-    const writeStream = createWriteStream(filePath);
-    response.pipe(writeStream);
-    writeStream.on('finish', () => {
-      writeStream.close();
-      res.download(filePath, fileName, (err) => {
-        if (err) console.err(err);
-        unlink(filePath, (err) => {
-          if (err) console.err(err);
-        });
-      });
-    });
-  });
+  download(req.body.url, res);
 };
 
 module.exports = { getFile, postFile };
