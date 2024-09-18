@@ -9,6 +9,7 @@ const indexController = require('./controllers/indexController');
 const userRouter = require('./routes/userRouter');
 const updateController = require('./controllers/updateController');
 const deleteController = require('./controllers/deleteController');
+const shareRouter = require('./routes/shareRouter');
 const session = require('express-session');
 const passport = require('passport');
 const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
@@ -52,5 +53,6 @@ app.use('/user', userRouter);
 app.use('/new', newRouter);
 app.post('/update', updateController);
 app.post('/delete', deleteController);
+app.use('/share', shareRouter);
 
 app.listen(process.env.PORT);
