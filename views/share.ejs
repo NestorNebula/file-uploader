@@ -11,7 +11,21 @@
   <div><%= `${folder.name} by ${user.username}` %></div>
   <% folder.Files.forEach((file) => { %>
   <div><%= file.name %></div>
+  <div>
+    <% if (file.size < 1000000) { %>
+    <%= `${file.size} B`%>
+    <% } else if (file.size < 1000000000) { %>
+    <%= `${Math.round(file.size * 100 / 100000) /100} MB`%>
+    <% } else { %>
+    <%= `${Math.round(file.size * 100 / 100000000) /100} GB`%>
+    <% } %>
+  </div>
+  <div><%= file.uploadTime.toLocaleString() %></div>
   <img src="<%= file.url %>" alt="<%= file.name %>">
+  <form action="/share/<%= folder.ShareLink.link %>/<%= file.id %>" method="POST">
+    <button>Download</button>
+    <input name="url" type="hidden" value="<%= file.url %>">
+  </form>
   <% }) %>
 </body>
 
