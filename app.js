@@ -15,6 +15,7 @@ const passport = require('passport');
 const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
 const { PrismaClient } = require('@prisma/client');
 const flash = require('connect-flash');
+const Sperror = require('sperror');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -54,5 +55,19 @@ app.use('/user', userRouter);
 app.use('/new', newRouter);
 app.post('/update', updateController);
 app.post('/delete', deleteController);
+
+app.use((req, res, next) => {
+  next(new Sperror('Page not found', "This page doesn't exist.", 404));
+});
+app.use((err, req, res, next) => {
+  err instanceof Sperror
+    ? next(err)
+    : next(
+        new Sperror('Unknown Error', 'The app faced an unknown error.', 500)
+      );
+});
+app.use((err, req, res, next) => {
+  res.render('error', { err });
+});
 
 app.listen(process.env.PORT);
