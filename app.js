@@ -46,6 +46,7 @@ app.use((req, res, next) => {
 app.get('/', indexController);
 app.use('/sign-up', signupRouter);
 app.use('/log-in', loginRouter);
+app.use('/share', shareRouter);
 app.use((req, res, next) => {
   req.user ? next() : res.redirect('/log-in');
 });
@@ -53,6 +54,5 @@ app.use('/user', userRouter);
 app.use('/new', newRouter);
 app.post('/update', updateController);
 app.post('/delete', deleteController);
-app.use('/share', shareRouter);
 
 app.listen(process.env.PORT);
