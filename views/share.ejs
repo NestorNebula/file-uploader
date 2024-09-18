@@ -8,6 +8,7 @@
 </head>
 
 <body>
+  <%- include('navbar') %>
   <div><%= `${folder.name} by ${user.username}` %></div>
   <% folder.Files.forEach((file) => { %>
   <div><%= file.name %></div>

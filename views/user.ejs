@@ -8,6 +8,7 @@
 </head>
 
 <body>
+  <%- include('navbar') %>
   <div>Hello, <%= user.username %></div>
   <div>You have <%= user.Folders.length %> folders.</div>
   <% user.Folders.forEach((folder) => { %>

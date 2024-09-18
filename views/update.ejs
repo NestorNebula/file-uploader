@@ -8,6 +8,7 @@
 </head>
 
 <body>
+  <%- include('navbar') %>
   <form action="/update" method="POST">
     <label for="name">Name</label>
     <input id="name" name="name" type="text" value="<%= folder.name %>">
