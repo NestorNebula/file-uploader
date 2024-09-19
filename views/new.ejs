@@ -6,35 +6,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>New Folder/File</title>
   <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/form.css">
 </head>
 
 <body>
   <%- include('navbar') %>
-  <form action="/new" method="POST">
-    <div>New Folder</div>
-    <label for="folder_name">Name</label>
-    <input id="folder_name" name="fname" type="text" minlength="2" maxlength="30" required>
-    <input name="action_type" type="hidden" value="cfolder">
-    <button>Create</button>
-  </form>
-
-  <form action="/new" enctype="multipart/form-data" method="POST">
-    <div>New File</div>
-    <label for="file_name">Name</label>
-    <input id="file_name" name="fname" type="text" minlength="2" maxlength="30" required>
-    <label for="folder">Folder</label>
-    <select name="folder" id="folder">
-      <% if (locals.folders) { %>
-      <% folders.forEach((folder) => { %>
-      <option value="<%= folder.id %>"><%= folder.name %></option>
-      <% }) %>
-      <% } %>
-    </select>
-    <label for="ufile">File</label>
-    <input id="ufile" name="ufile" type="file" required>
-    <input name="action_type" type="hidden" value="cfile">
-    <button>Upload File</button>
-  </form>
+  <section class="forms">
+    <form class="form" action="/new" method="POST">
+      <div class="form-title">New Folder</div>
+      <label for="folder_name">Name</label>
+      <input id="folder_name" name="fname" type="text" minlength="2" maxlength="30" required>
+      <input name="action_type" type="hidden" value="cfolder">
+      <button>Create</button>
+    </form>
+    <form class="form" action="/new" enctype="multipart/form-data" method="POST">
+      <div class="form-title">New File</div>
+      <label for="file_name">Name</label>
+      <input id="file_name" name="fname" type="text" minlength="2" maxlength="30" required>
+      <label for="folder">Folder</label>
+      <select name="folder" id="folder">
+        <% if (locals.folders) { %>
+        <% folders.forEach((folder) => { %>
+        <option value="<%= folder.id %>"><%= folder.name %></option>
+        <% }) %>
+        <% } %>
+      </select>
+      <label for="ufile">File</label>
+      <input id="ufile" name="ufile" type="file" required>
+      <input name="action_type" type="hidden" value="cfile">
+      <button>Upload File</button>
+    </form>
+  </section>
 </body>
 
 </html>

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Log-In</title>
   <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/form.css">
 </head>
 
 <body>
@@ -13,13 +14,16 @@
   <% if (error.length) { %>
   <div><%= error %></div>
   <% } %>
-  <form action="/log-in" method="POST">
-    <label for="username">Username or Email</label>
-    <input id="username" name="username" type="text" required>
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" required>
-    <button>Log-In</button>
-  </form>
+  <section class="forms">
+    <form class="form" action="/log-in" method="POST">
+      <div class="form-title">Log In</div>
+      <label for="username">Username or Email</label>
+      <input id="username" name="username" type="text" required>
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" required>
+      <button>Log-In</button>
+    </form>
+  </section>
 </body>
 
 </html>

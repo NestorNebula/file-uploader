@@ -6,17 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Update <%= folder.name %></title>
   <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/form.css">
 </head>
 
 <body>
   <%- include('navbar') %>
-  <form action="/update" method="POST">
-    <label for="name">Name</label>
-    <input id="name" name="name" type="text" value="<%= folder.name %>">
-    <input name="id" type="hidden" value="<%= folder.id %>">
-    <input name="action" type="hidden" value="send">
-    <button>Update</button>
-  </form>
+  <section class="forms">
+    <form class="form" action="/update" method="POST">
+      <div class="form-title">Update <%= folder.name %></div>
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" value="<%= folder.name %>">
+      <input name="id" type="hidden" value="<%= folder.id %>">
+      <input name="action" type="hidden" value="send">
+      <button>Update</button>
+    </form>
+  </section>
 </body>
 
 </html>
