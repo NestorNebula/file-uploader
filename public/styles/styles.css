@@ -61,10 +61,15 @@ nav {
   padding: 2rem 4rem 4rem;
 }
 
+.logo {
+  max-width: 10rem;
+}
+
 nav > ul {
   display: flex;
   justify-content: space-between;
   padding: 0;
+  align-items: center;
 }
 
 li {
