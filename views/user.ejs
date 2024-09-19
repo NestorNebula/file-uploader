@@ -14,8 +14,10 @@
   <%- include('navbar') %>
   <header>
     <div>Hello, <%= user.username %></div>
-    <div class="fnumber"><%= user.Folders.length > 1 ? `${user.Folders.length} files` : `${user.Folders.length} file` %></div>
-    <a class="newflink" href="/new">Add new folders/files</a>
+    <div class="fnumber newlink">
+      <div><%= user.Folders.length > 1 ? `${user.Folders.length} folders` : `${user.Folders.length} folder` %></div>
+      <a href="/new">+</a>
+    </div>
   </header>
   <div class="folders">
     <% user.Folders.forEach((folder) => { %>

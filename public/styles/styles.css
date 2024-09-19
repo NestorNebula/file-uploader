@@ -95,7 +95,8 @@ header {
   text-align: center;
 }
 
-header > .fnumber,
-header > .newflink {
+.fnumber.newlink {
   align-self: start;
+  display: flex;
+  gap: 1rem;
 }

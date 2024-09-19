@@ -9,6 +9,12 @@
   flex-direction: column;
   gap: 1rem;
   align-items: center;
+  padding: 1.125rem;
+  border-right: 1px solid grey;
+}
+
+.user-file:last-child > a {
+  border-right: none;
 }
 
 .user-fname {

@@ -2,7 +2,10 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin: 2rem;
+  margin: 1rem;
+  background-color: #f8fafc;
+  padding: 1rem;
+  border-radius: 10px;
 }
 
 .folder-info {
@@ -14,7 +17,6 @@
 .folder-content {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2.5rem;
 }
 
 .share {
