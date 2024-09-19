@@ -1,0 +1,25 @@
+.file {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: 1.5rem;
+  max-width: 70vw;
+  align-self: center;
+  font-size: 1.75rem;
+  margin: 1rem;
+}
+
+.fname,
+.fimage,
+.fforms {
+  grid-column: 1 / 3;
+}
+
+.fname {
+  font-size: 2.5rem;
+}
+
+.fforms {
+  display: flex;
+  gap: 1rem;
+}
