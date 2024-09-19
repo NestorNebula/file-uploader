@@ -26,6 +26,9 @@
     <button>Download</button>
     <input name="url" type="hidden" value="<%= file.url %>">
   </form>
+  <form action="/user/<%= folder.id %>/<%= file.id %>/delete" method="POST">
+    <button>Delete</button>
+  </form>
 </body>
 
 </html>
