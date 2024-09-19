@@ -8,12 +8,13 @@
   <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/folder.css">
   <link rel="stylesheet" href="/styles/file.css">
+  <link rel="stylesheet" href="/styles/share.css">
 </head>
 
 <body>
   <%- include('navbar') %>
   <section class="folder">
-    <div class="folder-info"><%= `${folder.name} by ${user.username}` %></div>
+    <div class="folder-info"><%= `"${folder.name}" by ${user.username}` %></div>
     <div class="folder-content">
       <% folder.Files.forEach((file) => { %>
       <div class="file">
