@@ -121,4 +121,16 @@ button:focus,
 .plus-link:hover {
   background-color: #155e75;
   color: aliceblue;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+  color: #475569;
 }
