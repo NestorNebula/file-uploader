@@ -6,12 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= `${err.statusCode} ${err.title}` %></title>
   <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/error.css">
 </head>
 
 <body>
-  <div><%= err.title %></div>
-  <div><%= err.message %></div>
-  <a href="/">Return to Homepage</a>
+  <div class="error">
+    <div class="error-title"><%= err.title %></div>
+    <div class="error-message"><%= err.message %></div>
+    <a class="error-link" href="/">Return to Homepage</a>
+  </div>
 </body>
 
 </html>
