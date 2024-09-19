@@ -12,6 +12,7 @@
   display: flex;
   gap: 1rem;
   font-size: 2rem;
+  align-items: center;
 }
 
 .folder-content {
