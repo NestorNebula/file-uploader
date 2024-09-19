@@ -21,8 +21,9 @@ const postShare = async (req, res) => {
   const existingLink = await prisma.getLinkByFolderId(+req.body.folder);
   if (existingLink) {
     await prisma.updateLink(date, +req.body.folder);
+  } else {
+    await prisma.createLink(date, +req.body.folder);
   }
-  await prisma.createLink(date, +req.body.folder);
   res.redirect('/user');
 };
 
