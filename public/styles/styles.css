@@ -70,3 +70,11 @@ nav > ul {
 li {
   list-style: none;
 }
+
+img {
+  -webkit-user-drag: none;
+}
+
+button {
+  cursor: pointer;
+}
