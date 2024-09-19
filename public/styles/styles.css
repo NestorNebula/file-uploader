@@ -112,7 +112,7 @@ button,
 .plus-link {
   border-radius: 5px;
   text-decoration: none;
-  background-color: #a5f3fc50;
+  background-color: #ef7067ab;
   transition: 1s ease-out;
   transition-property: background-color, color;
 }
@@ -124,7 +124,7 @@ button,
 button:hover,
 button:focus,
 .plus-link:hover {
-  background-color: #155e75;
+  background-color: #ed645f;
   color: aliceblue;
   text-decoration: none;
 }
@@ -137,5 +137,5 @@ a {
 a:hover,
 a:focus {
   text-decoration: underline;
-  color: #475569;
+  color: #ed645f;
 }
