@@ -7,12 +7,13 @@
   <title>Log-In</title>
   <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/form.css">
+  <link rel="stylesheet" href="/styles/errors.css">
 </head>
 
 <body>
   <%- include('navbar') %>
   <% if (error.length) { %>
-  <div><%= error %></div>
+  <div class="errors"><%= error %></div>
   <% } %>
   <section class="forms">
     <form class="form" action="/log-in" method="POST">
