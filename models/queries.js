@@ -109,6 +109,12 @@ const getFile = async (id) => {
   return file;
 };
 
+const deleteFile = async (id) => {
+  await prisma.file.delete({
+    where: { id },
+  });
+};
+
 // ShareLink queries
 
 const createLink = async (exDate, folderId) => {
@@ -157,6 +163,7 @@ module.exports = {
   deleteFolder,
   createFile,
   getFile,
+  deleteFile,
   createLink,
   getLinkByFolderId,
   getLinkByLink,
