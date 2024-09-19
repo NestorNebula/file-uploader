@@ -7,6 +7,7 @@
   <title><%= user.username %> Dashboard's</title>
   <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/folder.css">
+  <link rel="stylesheet" href="/styles/user.css">
 </head>
 
 <body>
@@ -14,48 +15,50 @@
   <header>
     <div>Hello, <%= user.username %></div>
     <div class="fnumber"><%= user.Folders.length > 1 ? `${user.Folders.length} files` : `${user.Folders.length} file` %></div>
+    <a class="newflink" href="/new">Add new folders/files</a>
   </header>
-  <% user.Folders.forEach((folder) => { %>
-  <section class="folder">
-    <div class="folder-info">
-      <div><%= folder.name %></div>
-      <form action="/update" method="POST">
-        <input name="id" type="hidden" value="<%= folder.id %>">
-        <input name="action" type="hidden" value="ask">
-        <button>Update</button>
-      </form>
-      <form action="/delete" method="POST">
-        <input name="id" type="hidden" value="<%= folder.id %>">
-        <button>Delete</button>
-      </form>
-      <% if (folder.ShareLink && folder.ShareLink.expire > new Date()) { %>
-      <a class="share" href="/share/<%= folder.ShareLink.link %>">Share Link</a>
-      <% } else { %>
-      <form class="share share-form" action="/share" method="POST">
-        <label for="exDate">Choose a duration to share the file</label>
-        <select name="exDate" id="exDate">
-          <option value="hours">24h</option>
-          <option value="days">10 days</option>
-          <option value="month">1 month</option>
-        </select>
-        <input name="folder" type="hidden" value="<%= folder.id %>">
-        <button>Create Link</button>
-      </form>
-      <% } %>
-    </div>
-    <div class="folder-content">
-      <% folder.Files.forEach((file) => { %>
-      <div class="user-file">
-        <a href="/user/<%= folder.id %>/<%= file.id %>">
-          <img src="<%= file.url %>" alt="<%= file.name %>">
-          <div><%= file.name %></div>
-        </a>
+  <div class="folders">
+    <% user.Folders.forEach((folder) => { %>
+    <section class="folder">
+      <div class="folder-info">
+        <div><%= folder.name %></div>
+        <form action="/update" method="POST">
+          <input name="id" type="hidden" value="<%= folder.id %>">
+          <input name="action" type="hidden" value="ask">
+          <button>Update</button>
+        </form>
+        <form action="/delete" method="POST">
+          <input name="id" type="hidden" value="<%= folder.id %>">
+          <button>Delete</button>
+        </form>
+        <% if (folder.ShareLink && folder.ShareLink.expire > new Date()) { %>
+        <a class="share share-icon" href="/share/<%= folder.ShareLink.link %>"><img src="/assets/icons/share.svg" alt="share"></a>
+        <% } else { %>
+        <form class="share share-form" action="/share" method="POST">
+          <label for="exDate">Choose a duration to share the file</label>
+          <select name="exDate" id="exDate">
+            <option value="hours">24h</option>
+            <option value="days">10 days</option>
+            <option value="month">1 month</option>
+          </select>
+          <input name="folder" type="hidden" value="<%= folder.id %>">
+          <button>Create Link</button>
+        </form>
+        <% } %>
       </div>
-    </div>
+      <div class="folder-content">
+        <% folder.Files.forEach((file) => { %>
+        <div class="user-file">
+          <a href="/user/<%= folder.id %>/<%= file.id %>">
+            <img src="<%= file.url %>" alt="<%= file.name %>">
+            <div class="user-fname"><%= file.name %></div>
+          </a>
+        </div>
+      </div>
+      <% }) %>
+    </section>
     <% }) %>
-  </section>
-  <% }) %>
-  <a href="/new">Add new folders/files</a>
+  </div>
 </body>
 
 </html>

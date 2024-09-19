@@ -90,10 +90,12 @@ header {
   gap: 1rem;
   font-size: 2.5rem;
   padding: 1rem;
+  margin-bottom: 2rem;
   width: 100%;
   text-align: center;
 }
 
-header > .fnumber {
+header > .fnumber,
+header > .newflink {
   align-self: start;
 }
