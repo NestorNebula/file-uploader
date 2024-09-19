@@ -11,8 +11,10 @@
 
 <body>
   <%- include('navbar') %>
-  <div>Hello, <%= user.username %></div>
-  <div>You have <%= user.Folders.length %> folders.</div>
+  <header>
+    <div>Hello, <%= user.username %></div>
+    <div class="fnumber"><%= user.Folders.length > 1 ? `${user.Folders.length} files` : `${user.Folders.length} file` %></div>
+  </header>
   <% user.Folders.forEach((folder) => { %>
   <section class="folder">
     <div class="folder-info">
