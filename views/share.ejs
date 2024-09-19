@@ -7,6 +7,7 @@
   <title><%= folder.name %></title>
   <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/folder.css">
+  <link rel="stylesheet" href="/styles/file.css">
 </head>
 
 <body>
@@ -15,22 +16,26 @@
     <div class="folder-info"><%= `${folder.name} by ${user.username}` %></div>
     <div class="folder-content">
       <% folder.Files.forEach((file) => { %>
-      <div><%= file.name %></div>
-      <img src="<%= file.url %>" alt="<%= file.name %>">
-      <div>
-        <% if (file.size < 1000000) { %>
-        <%= `${file.size} B`%>
-        <% } else if (file.size < 1000000000) { %>
-        <%= `${Math.round(file.size * 100 / 100000) /100} MB`%>
-        <% } else { %>
-        <%= `${Math.round(file.size * 100 / 100000000) /100} GB`%>
-        <% } %>
+      <div class="file">
+        <div class="fname"><%= file.name %></div>
+        <img class="fimage" src="<%= file.url %>" alt="<%= file.name %>">
+        <div class="fsize">
+          <% if (file.size < 1000000) { %>
+          <%= `${file.size} B`%>
+          <% } else if (file.size < 1000000000) { %>
+          <%= `${Math.round(file.size * 100 / 100000) /100} MB`%>
+          <% } else { %>
+          <%= `${Math.round(file.size * 100 / 100000000) /100} GB`%>
+          <% } %>
+        </div>
+        <div class="fupload"><%= file.uploadTime.toLocaleString() %></div>
+        <div class="fforms">
+          <form action="/share/<%= folder.ShareLink.link %>/<%= file.id %>" method="POST">
+            <button>Download</button>
+            <input name="url" type="hidden" value="<%= file.url %>">
+          </form>
+        </div>
       </div>
-      <div><%= file.uploadTime.toLocaleString() %></div>
-      <form action="/share/<%= folder.ShareLink.link %>/<%= file.id %>" method="POST">
-        <button>Download</button>
-        <input name="url" type="hidden" value="<%= file.url %>">
-      </form>
       <% }) %>
     </div>
   </section>

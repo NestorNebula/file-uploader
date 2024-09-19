@@ -6,29 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= `${user.username} ${file.name}` %></title>
   <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/file.css">
 </head>
 
 <body>
   <%- include('navbar') %>
-  <div><%= file.name %></div>
-  <img src="<%= file.url %>" alt="<%= file.name %>">
-  <div>
-    <% if (file.size < 1000000) { %>
-    <%= `${file.size} B`%>
-    <% } else if (file.size < 1000000000) { %>
-    <%= `${Math.round(file.size * 100 / 100000) /100} MB`%>
-    <% } else { %>
-    <%= `${Math.round(file.size * 100 / 100000000) /100} GB`%>
-    <% } %>
-  </div>
-  <div><%= file.uploadTime.toLocaleString() %></div>
-  <form action="/user/<%= folder.id %>/<%= file.id %>" method="POST">
-    <button>Download</button>
-    <input name="url" type="hidden" value="<%= file.url %>">
-  </form>
-  <form action="/user/<%= folder.id %>/<%= file.id %>/delete" method="POST">
-    <button>Delete</button>
-  </form>
+  <section class="file">
+    <div class="fname"><%= file.name %></div>
+    <img class="fimage" src="<%= file.url %>" alt="<%= file.name %>">
+    <div class="fsize">
+      <% if (file.size < 1000000) { %>
+      <%= `${file.size} B`%>
+      <% } else if (file.size < 1000000000) { %>
+      <%= `${Math.round(file.size * 100 / 100000) /100} MB`%>
+      <% } else { %>
+      <%= `${Math.round(file.size * 100 / 100000000) /100} GB`%>
+      <% } %>
+    </div>
+    <div class="fupload"><%= file.uploadTime.toLocaleString() %></div>
+    <div class="fforms">
+      <form action="/user/<%= folder.id %>/<%= file.id %>" method="POST">
+        <button>Download</button>
+        <input name="url" type="hidden" value="<%= file.url %>">
+      </form>
+      <form action="/user/<%= folder.id %>/<%= file.id %>/delete" method="POST">
+        <button>Delete</button>
+      </form>
+    </div>
+  </section>
 </body>
 
 </html>
