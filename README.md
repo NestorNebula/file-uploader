@@ -61,12 +61,8 @@ The user can also delete his own folders/files.
    git remote add upstream https://github.com/file-uploader/<repo name>.git
    ```
 
-4. Install required packages
-   ```
-   npm install
-   ```
-5. Create a postgreSQL database
-6. Create a .env file in the project root directory with the following keys
+4. Create a postgreSQL database
+5. Create a .env file in the project root directory with the following keys
 
    ```
    PORT=8080
@@ -79,7 +75,11 @@ The user can also delete his own folders/files.
    API_SECRET=<your_api_secret>
    ```
 
-7. Run the following commands in your terminal.
+6. Install required packages
+   ```
+   npm install
+   ```
+7. Run the following command in your terminal.
    ```
    npx prisma migrate dev --name localdb_migration
    ```
