@@ -1,6 +1,7 @@
 const { body } = require('express-validator');
 const prisma = require('../models/queries');
 const cloudinary = require('../modules/cloudinary');
+const { createId } = require('@paralleldrive/cuid2');
 
 const validateFolder = [body('fname').trim().blacklist('<>')];
 
@@ -19,7 +20,7 @@ const postNew = [
     if (req.body.action_type === 'cfolder') {
       await prisma.createFolder({ name: req.body.fname, user: req.user });
     } else if (req.body.action_type === 'cfile') {
-      const id = req.file.originalname.split('.')[0] + req.user.id;
+      const id = req.file.originalname.split('.')[0] + req.user.id + createId();
       const options = setOptions(id);
       const b64 = Buffer.from(req.file.buffer).toString('base64');
       let dataUri = 'data:' + req.file.mimetype + ';base64,' + b64;
