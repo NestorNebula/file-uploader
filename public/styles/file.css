@@ -7,6 +7,15 @@
   align-self: center;
   font-size: 1.75rem;
   margin: 1rem;
+  height: 100%;
+  grid-template-rows: auto 1fr auto auto;
+}
+
+.file > img {
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px lightblue;
 }
 
 .fname,

@@ -17,7 +17,6 @@
   <header>
     <div>Hello, <%= user.username %></div>
     <div class="fnumber newlink">
-      <div><%= user.Folders.length > 1 ? `${user.Folders.length} folders` : `${user.Folders.length} folder` %></div>
       <a class="plus-link" href="/new">+</a>
     </div>
   </header>
@@ -58,8 +57,8 @@
             <div class="user-fname"><%= file.name %></div>
           </a>
         </div>
+        <% }) %>
       </div>
-      <% }) %>
     </section>
     <% }) %>
   </div>

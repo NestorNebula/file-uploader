@@ -9,12 +9,15 @@
   flex-direction: column;
   gap: 1rem;
   align-items: center;
-  padding: 1.125rem;
-  border-right: 1px solid grey;
+  height: 100%;
+  padding: 1.75rem;
 }
 
-.user-file:last-child > a {
-  border-right: none;
+.user-file > a > img {
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px lightblue;
+  height: 100%;
+  object-fit: cover;
 }
 
 .user-fname {
